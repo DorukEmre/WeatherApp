@@ -1,5 +1,3 @@
-// check https://open-platform.theguardian.com/explore/
-
 const button = document.querySelector('#button');
 button.addEventListener('click', getWeather);
 
