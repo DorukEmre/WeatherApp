@@ -7,7 +7,7 @@ function getWeather() {
     const main = document.querySelector('.main');
 
     const searchValue = document.querySelector('#search').value;
-    const urlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=293571a53ca7d6c64d41523bb89b2cd1`    
+    const urlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${config.KEY_OWM}`    
 
     let cityObject = {};
 
@@ -24,7 +24,7 @@ function getWeather() {
                 lon: data[0].lon
             };
         })
-        .then(cityObject => fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityObject.lat}&lon=${cityObject.lon}&appid=293571a53ca7d6c64d41523bb89b2cd1`, {mode: 'cors'}))
+        .then(cityObject => fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityObject.lat}&lon=${cityObject.lon}&appid=${config.KEY_OWM}`, {mode: 'cors'}))
         .then(response => response.json())
         .then(data => {
             // console.log(data)
@@ -44,7 +44,7 @@ function getWeather() {
             
             return cityObject
         })
-        .then(cityObject => fetch(`https://api.unsplash.com/search/photos?query=${cityObject.name}-${cityObject.description}&client_id=mpg_uaxcAVamdQmZ9Z3nWoRprMf94S5mLJJ828mZE_U`, {mode: 'cors'}))
+        .then(cityObject => fetch(`https://api.unsplash.com/search/photos?query=${cityObject.name}-${cityObject.description}&client_id=${config.KEY_US}`, {mode: 'cors'}))
         .then(response => response.json())
         .then(data => {
             // console.log(data)
